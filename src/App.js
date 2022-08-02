@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound';
 
 // components
 import Navbar from "./components/Navbar"
-import Signup from "./pages/auth/Signup";
+// import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
 import Scrap from "./pages/Scrap";
 
