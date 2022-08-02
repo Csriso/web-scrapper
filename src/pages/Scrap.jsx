@@ -3,32 +3,33 @@ import { useRef } from 'react'
 import { scrapService, submitScrapService } from '../services/scrap.services';
 
 function Scrap() {
-
     const inputUrlRef = useRef();
-
     const titleRef = useRef();
     const descriptionRef = useRef();
     const priceRef = useRef();
 
     const [data, setData] = useState(null);
+    const [dataSubmited, setDataSubmited] = useState(false);
+    const [loadingScrap, setLoadingScrap] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setDataSubmited(false);
+        setLoadingScrap(true);
+        setData(null);
         const response = await scrapService({ "url": inputUrlRef.current.value });
         setData(response.data);
+        setLoadingScrap(false);
     }
     const submitDataDb = async (e) => {
         e.preventDefault();
-        console.log("SUBMIT", {
-            title: titleRef.current.value,
-            description: descriptionRef.current.value,
-            price: priceRef.current.value,
-        });
         const response = await submitScrapService({
             title: titleRef.current.value,
             description: descriptionRef.current.value,
             price: priceRef.current.value,
             image: data.image,
         })
+        setData(null);
+        setDataSubmited(true);
         console.log(response);
     }
     return (
@@ -41,7 +42,8 @@ function Scrap() {
                     <button type="submit" className=''>SCRAP IT!</button>
                 </form>
             </div>
-
+            {loadingScrap === true && <div>Loading</div>}
+            {dataSubmited === true && <div>DATA SUBMITED TO DB</div>}
             {data !== null &&
                 <div className='mt-12 bg-slate-300 w-9/12 flex flex-col justify-center items-center content-center align-items-center'>
                     <label htmlFor="title">TITLE</label>

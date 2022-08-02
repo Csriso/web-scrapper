@@ -23,7 +23,7 @@ function App() {
 
 
         <Route path="/scrap" element={<Scrap />} />
-        <Route path="/signup" element={<Signup />} />
+        {/* <Route path="/signup" element={<Signup />} /> */}
         <Route path="/login" element={<Login />} />
 
         {/* error FE routes */}

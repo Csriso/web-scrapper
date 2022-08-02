@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const service = axios.create({
-    baseURL: "http://localhost:5005/api"
+    baseURL: process.env.REACT_APP_BACKURL || "http://localhost:5005/api"
 })
 
 // es donde hacemos codigo magia donde el token será enviado al backend

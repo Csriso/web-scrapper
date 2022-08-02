@@ -32,7 +32,7 @@ function Navbar() {
         </>
       ) : (
         <>
-          <NavLink to="/signup" style={toggleStyles}> Registro </NavLink>
+          {/* <NavLink to="/signup" style={toggleStyles}> Registro </NavLink> */}
           <NavLink to="/login" style={toggleStyles}> Acceder </NavLink>
         </>
       )}
